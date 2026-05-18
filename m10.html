@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LSM ᰔᩚ</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Pacifico&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#ecd7df;
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+/* MAIN CARD */
+
+.container{
+    width:1000px;
+    height:650px;
+    background:rgba(255,255,255,.06);
+    border-radius:20px;
+    /*box-shadow: 12px 12px rgba(167, 109, 109, 0.45);*/
+    box-shadow:0 15px 40px rgba(0,0,0,.45);
+    padding:10px;
+    position:absolute;
+    align-items: center;
+    overflow:hidden;
+}
+
+/* TOP NAVIGATION */
+
+.top-nav{
+    display:flex;
+    gap:12px;
+    margin-bottom:15px;
+    z-index:5;
+    position:relative;
+}
+
+.lsm {
+    text-decoration:none;
+    background:linear-gradient(to right,#b66b9b,#8f315d);
+    color:white;
+    padding:12px 28px;
+    border-radius:12px 12px 12px 12px;
+    font-size:20px;
+    font-weight:600;
+    transition:.3s;
+}
+
+
+/* BOOKMARK */
+
+.bookmark{
+    position:absolute;
+    top:0;
+    right:40px;
+    width:50px;
+    height:70px;
+    background:linear-gradient(to bottom,#c96a92,#7d203f);
+    clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);
+}
+
+/* MAIN CONTENT */
+
+.content{
+    width:100%;
+    height:550px;
+    background:#ffffff;
+    border-radius:18px;
+    overflow-y:auto;
+    padding:25px;
+    position:relative;
+}
+
+/* SCROLLBAR */
+
+.content::-webkit-scrollbar{
+    width:10px;
+}
+
+.content::-webkit-scrollbar-thumb{
+    background:#c87a99;
+    border-radius:10px;
+}
+
+/* SECTIONS */
+
+.section{
+    min-height:500px;
+    display:flex;
+    gap:30px;
+    margin-bottom:80px;
+    position:relative;
+    z-index:2;
+}
+
+.photo{
+    width:250px;
+    background:white;
+    padding:10px;
+    transform:rotate(-4deg);
+    box-shadow:0 6px 15px rgba(0,0,0,.15);
+    margin-bottom:0px;
+}
+
+.photo img{
+    width:100%;
+    display:block;
+}
+
+.info{
+    line-height:1.6;
+    padding:9px 28px;
+    border-radius:12px 12px 12px;
+    color:#7e203f;
+    font-family:'Pacifico',cursive;
+    font-size:25px;
+    transition:.3s;
+}
+
+/* SOCIALS */
+
+.socials{
+    display:grid;
+    grid-template-columns:repeat(3,50px);
+    gap:15px;
+    margin-top:18px;
+    color:#c06c8a;
+    font-size:38px;
+}
+
+
+.title{
+    font-family:'Pacifico',cursive;
+    font-size:70px;
+    text-align:center;
+    margin-bottom:15px;
+    background:linear-gradient(to right,#b865aa,#7e203f);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.text{
+    text-align:center;
+    font-size:20px;
+    line-height:1.9;
+    color:#b06a85;
+    font-weight:600;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+    .container{
+        width:100%;
+        height:auto;
+    }
+
+    .content{
+        height:auto;
+    }
+
+    .section{
+        flex-direction:column;
+    }
+
+    .left{
+        width:100%;
+    }
+
+    .title{
+        font-size:45px;
+    }
+
+    .side-tabs{
+        display:none;
+    }
+
+}
+.glow{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.35;
+}
+
+.g1{
+    width:400px;
+    height:400px;
+    background:#8d3bff;
+    top:-120px;
+    left:-100px;
+}
+
+.g2{
+    position: absolute;
+    width:350px;
+    height:350px;
+    background:#ff004c;
+    bottom:-100px;
+    right:-100px;
+}
+
+.g3{
+    width:250px;
+    height:250px;
+    background:#ff4da6;
+    top:40%;
+    left:50%;
+}
+/* FLOATING HEARTS */
+
+.heart{
+    position:fixed;
+    color:white;
+    opacity:.15;
+    animation:float 12s linear infinite;
+    font-size:20px;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh) scale(.4);
+    }
+    100%{
+        transform:translateY(-120vh) scale(1.6);
+    }
+}
+
+.heart:nth-child(1){left:10%;animation-duration:9s;}
+.heart:nth-child(2){left:25%;animation-duration:13s;}
+.heart:nth-child(3){left:50%;animation-duration:11s;}
+.heart:nth-child(4){left:75%;animation-duration:15s;}
+.heart:nth-child(5){left:90%;animation-duration:10s;}
+
+.main-wrapper{
+    position:relative;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:10px;
+}
+
+.homepage {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    font-size: 15px;
+    text-decoration: none;
+    background:linear-gradient(to right,#b66b9b36,hsla(332, 49%, 38%, 0.195));
+    padding:5px 28px;
+    border-radius:12px 12px 12px 12px;
+    transition:.3s;
+}
+</style>
+</head>
+
+<body>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+<div class="glow g3"></div>
+
+<div class="heart">❤</div>
+<div class="heart">❤</div>
+<div class="heart">❤</div>
+<div class="heart">❤</div>
+<div class="heart">❤</div>
+
+<div class="container">
+
+    <div class="bookmark"></div>
+
+    <!-- TOP TABS -->
+
+    <div class="top-nav">
+        <p class="lsm">long sweet messages ݁ ˖Ი𐑼⋆</p>
+        <a class="homepage" href="index.html" target="_parent">Back to Home Page</a>
+    </div>
+
+    <!-- SCROLLABLE CONTENT -->
+
+    <div class="content">
+
+        <section class="section" id="home">
+
+            <div class="right">
+
+                <div class="title">
+                    ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹<br>
+                    ur padma!
+                </div>
+
+                <div class="text">
+                    Hello, Ate Zonia! Thank you so muchh for your never ending support
+                     and doing ur best just to make us feel na whatever happens, hindi mo 
+                     kami susukuan, which proves ur deep dedication sa main and to us, ur 
+                     tahanan hehe. We really appreciate all the love, patience, and effort u 
+                     give kahit minsan super pagod ka na rin. Your presence alone already gives 
+                     comfort and assurance to everyone, kaya ang lucky namin to have someone like 
+                     u guiding and supporting us. Thank you for always staying genuine and strong 
+                     for us, Ate Zonia. We’ll always be proud of u and grateful for everything u do. 🤍
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="section" id="home">
+
+            <div class="right">
+
+                <div class="title">
+                    ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹<br>
+                    ur vaein!
+                </div>
+
+                <div class="text">
+                    To our dearest handler, Ate Zonia, thank you from the bottom of our hearts for every 
+                    reminder, advice, correction, and guidance you gave us. Behind every task, announcement, 
+                    meeting, and call-out was your time, effort, patience, and dedication. Thank you for staying 
+                    with us even during the times we were hard to handle, inactive, or failed to meet expectations. 
+                    Instead of giving up, you continued to guide and understand us. You didn’t just handle a council, 
+                    you helped us grow as individuals.
+
+                    “This is not the end of our journey, this is just the beginning of our dreams and goals.” This is 
+                    not a goodbye, but a promise. We will continue to grow, improve, and make you proud. No matter where 
+                    life takes us, you will always be part of our journey. Thank you for becoming our comfort and safe 
+                    place, Ate Zonia. We’ll always be grateful for you.
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="section" id="home">
+
+            <div class="right">
+
+                <div class="title">
+                    ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹<br>
+                    ur venx!
+                </div>
+
+                <div class="text">
+                    To our dearest handler, Zonia Natsumi. thank you ate sa pag bibigay 
+                    ng trust samin, thank you for the one month bonding with us po, hindi 
+                    ka namin makakalimutan ate, lagi natin tatandaan sinasabi mo samin. 
+                    mamimiss ka namin ate adelle ng sobra, goodluck sa new main mo ate, 
+                    visit ikaw palagi sa main ten ate ha? kami parin dapat ang babies mo. 
+                    i love you ate zo, ingat ikaw palagi po.
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="section" id="home">
+
+            <div class="right">
+
+                <div class="title">
+                    ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹<br>
+                    ur minji!
+                </div>
+
+                <div class="text">
+                    To our dearest ate adelle, thank you so much for everything you've done for us. 
+                    thank you for being patient, understanding, and for always trying your best to 
+                    guide us whenever we needed help. I honestly appreciate all the small things you 
+                    did, even the things you probably thought were simple lang, they meant a lot to 
+                    me more than you know. thank you for all the reminders, encouragement and moments 
+                    na pinasaya mo kami without even realizing it. i'll miss you so much ate, ingat ka 
+                    lagi lahams kita since day one.
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="section" id="home">
+
+            <div class="right">
+
+                <div class="title">
+                    ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹<br>
+                    ur saverie!
+                </div>
+
+                <div class="text">
+                    Hi Ate zonia, It’s already been one month since we 
+                    started spending time together, and I honestly can’t 
+                    explain how thankful I am to have you in my life. 
+                    You became someone I can comfortably talk to and someone 
+                    who always brings warmth and positivity whenever we interact. 
+                    Even in a short amount of time, you made me feel cared for in 
+                    many ways, and u might not have notice it but for me I notice 
+                    all even it was small but u still made me feel cared and I 
+                    will never forget does. Thank you for always being gentle, 
+                    patient, and understanding with me. I really appreciate how you 
+                    always know how to comfort me and make me smile, especially during 
+                    times when I feel tired or quiet or scared. Your presence feels so 
+                    comforting, like having someone who truly listens and stays no matter what.
+
+                    I admire how sweet and caring you are, not just to me but to everyone 
+                    around you. The way you handle things with kindness makes me respect 
+                    you even more. I’m grateful for every conversation, every laugh, and 
+                    every memory we shared this past month because those moments genuinely 
+                    became special to me. Thank you for making me feel appreciated 
+                    and welcomed. Having an ate like you is something I’ll always treasure 
+                    because you became one of the people who made this month unforgettable 
+                    for me. I hope you know how much I appreciate you and how lucky I feel 
+                    to have met someone as amazing as you, I hope we will still meet good 
+                    luck to your journey and new main ate and again, Thank you ate Zonia.
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="section" id="home">
+
+            <div class="right">
+
+                <div class="title">
+                    ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹<br>
+                    ur ilya!
+                </div>
+
+                <div class="text">
+                    To our dearest ate zonia/adella, we appreciate you being an 
+                    amazing part of the journey. We cannot express how thankful 
+                    we are, in words, for the unwavering care, patience, support, 
+                    and love you gave us all for one month na pagsasama natin. 
+                    You were not only our handler but also someone we could look 
+                    up to and feel safe with as well as our comfort zone and our favorites.
+
+                    idk how to say this ate, but masakit rin po isipin na lilipat kana sa 
+                    ibang main. mahirap po mag-goodbye to someone like you, who became part 
+                    of our daily memories. from the simpleng tawanan, stressful moments, 
+                    pieces advice and everything else that you did for us... all became special due to you
+
+                    thank you for going through everything with us, 
+                    hindi ka man namin maka interact like the same way as before, but don’t worry po, 
+                    you will be appreciated, remembered and lagi kang may space sa heart namin po. 
+                    Castle 10 is proud of you, and we wish that your next journey brings you more happiness. 
+                    we hope that you find more success and more people who will value you like you deserve ><
+
+                    thank you for the love, support and memories ate! many people come and go, people like 
+                    you will always stay in one’s memory. we love you so much po! mamimiss ka namin ><
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="section" id="home">
+
+            <div class="right">
+
+                <div class="title">
+                    ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹<br>
+                    ur elvira!
+                </div>
+
+                <div class="text">
+                    helloueeee atee adelleee!! di man tayo gaanong nakakapag interact with
+                    each other minsan lang, pero even with those little interactions, i already
+                    see you as a very kind, approachable, and genuine person. super naa-appreciate 
+                    ko rin kung paano mo hina-handle yung main and kung paano mo inaasikaso lahat
+
+                    thank youuuu because binago mo yung pananaw ko sa handlers ng dainty dolls. 
+                    to be honest, one of the reasons why nag unoff ako before is because of our 
+                    previous handler (hindi ko na sasabihin kung sino) because of that experience, 
+                    parang naging distant ako and medyo nawalan ako ng gana before. pero ikaw yung 
+                    isa sa mga taong nagpa realize sa akin na hindi lahat ng handlers are the same. 
+                    you made me feel seen, welcomed, and comfortable ulit 🙇🏻‍♀️🙇🏻‍♀️
+
+                    thank you for being patient, responsible, and understanding despite all the 
+                    tasks and pressure that come with handling things, especially sa rw. i know 
+                    hindi madaling mag manage and responsibilities, but you still do it gracefully. 
+                    thank you rin for always reminding us to do better and for believing in our 
+                    capabilities as a council. i hope you know that your hard work never goes 
+                    unnoticed and that a lot of us appreciate you more than you think, atee!! 🫂🫂🫶🏻🫶🏻
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="section" id="home">
+
+            <div class="right">
+
+                <div class="title">
+                    ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹<br>
+                    ur seve!
+                </div>
+
+                <div class="text">
+                    hello ate ! thank you for your patience, guidance, understanding and care you 
+                    gave throughout the time we were with you. you became more than just a handler 
+                    to us—you became someone we looked up to, someone who supported us quietly even 
+                    during the difficult days. as we say our goodbyes, please know that the memories 
+                    we shared with you will always stay with us. we’ll carry the lessons, encouragement, 
+                    and moments of laughter wherever we go. it’s hard to part ways with someone who became 
+                    such an important part of our experience, but we’re also happy and thankful that we 
+                    had the chance to meet someone like you. we sincerely hope that life gives you nothing 
+                    but happiness, peace, success, and people who will appreciate you the same way we do. no 
+                    matter where life takes us, we’ll always be grateful for the time, effort, and heart you 
+                    gave to us. we’ll miss you, ate zoniang ! we love you, perfect ten is always here for ü.
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="section" id="home">
+
+            <div class="right">
+
+                <div class="title">
+                    ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹<br>
+                    ur carrot!
+                </div>
+
+                <div class="text">
+                    Hindi ko man lagi nasasabi, pero sobrang naa-appreciate kita bilang tao. 
+                    Ang bait mo sa lahat, responsable ka sa mga bagay na ginagawa mo, at 
+                    marunong kang rumespeto kahit kanino. Ang gaan mo ring kasama dahil sa 
+                    humor mo, pero higit doon, gusto ko kung paano ka umintindi ng tao. You 
+                    know how to comfort people without making them feel judged, and ang dali 
+                    mong lapitan kasi ang warm ng presence mo. Isa ka sa mga taong nakakapagpagaan 
+                    ng araw nang hindi mo namamalayan. Stay the same ha, kasi bihira yung taong katulad mo.
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="section" id="home">
+
+            <div class="right">
+
+                <div class="title">
+                    ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹<br>
+                    ur varelle!
+                </div>
+
+                <div class="text">
+                    Thank you for being our best handler, Ate Zonia! Your patience, guidance, and 
+                    dedication make everything run smoothly, even on the busiest days. We really 
+                    appreciate how you handle every situation with calmness and professionalism, 
+                    and how you always make sure everyone feels supported. It's rare to find someone 
+                    who cares as much as you do, and it truly makes a difference for the whole team. 
+                    We're grateful to have you with us. Your positive attitude lifts everyone's mood, 
+                    and your willingness to go the extra mile never goes unnoticed. Working with you 
+                    makes the whole experience easier and more enjoyable.
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+
+</div>
+
+</body>
+</html>
